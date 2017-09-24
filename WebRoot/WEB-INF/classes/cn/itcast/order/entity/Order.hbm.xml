@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 映射文件 -->
+<!-- package 实体所在包名，可以不写，但是class中 name要指定全路径-->
+<hibernate-mapping package="cn.itcast.order.entity" >
+	<class name="Order" table="orders" >
+		<id name="oid" column="oid">
+			<generator class="native"></generator>
+		</id>
+		<property name="total"/>
+		<property name="ordertime"/>
+		<property name="state"/>
+		<property name="name"/>
+		<property name="phone"/>
+		<property name="addr"/>
+		<!-- 与用户之间的多对一关系 即一个用户可以有多个订单 -->
+		<many-to-one name="user" class="cn.itcast.user.entity.User" lazy="false" column="uid"></many-to-one>
+		<!-- 与订单项之间的一对多关系，即一个订单中有多个订单项 -->
+		<set name="orderitems" lazy="false" cascade="save-update">
+			<key column="oid"></key>
+			<one-to-many class="cn.itcast.order.entity.OrderItem"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+     	 
+     	<!-- 访问首页面的action配置 -->
+	<bean id="indexAction" class="cn.itcast.indexAction.indexAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="productService" ref="productService"></property>
+	</bean>
+	
+	<!-- 访问用户的action配置 -->
+	<bean id="userAction" class="cn.itcast.user.action.userAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<!-- 验证码验证的action配置 -->
+	<bean id="checkimgAction" class="cn.itcast.user.action.CheckImgAction" scope="prototype">
+	</bean>
+	
+	<!-- 访问商品的action配置 -->
+	<bean id="productAction" class="cn.itcast.product.action.ProductAction" scope="prototype">
+		<property name="productService" ref="productService"></property>
+		<property name="categoryService" ref="categoryService"></property>
+	</bean>
+	
+	<!-- 访问购物车的action配置 -->
+	
+	<bean id="cartAction" class="cn.itcast.cart.action.CartAction" scope="prototype">
+		<property name="productService" ref="productService"></property>
+	</bean>
+	
+	<!-- 访问订单的action配置 -->
+	<bean id="orderAction" class="cn.itcast.order.action.OrderAction"  scope="prototype">
+			<property name="orderService" ref="orderService"></property>
+	</bean>
+	
+	<bean id="adminUserAction" class="cn.itcast.admin.action.AdminUserAction" scope="prototype">
+		<property name="adminUserService" ref="adminUserService"> </property>
+	</bean>
+	
+	<bean id="adminCategory" class="cn.itcast.category.adminaction.AdminCategoryAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"></property>
+	</bean>
+	
+	<bean id="adminCategorySecond" class="cn.itcast.categorysecond.adminaction.AdminCategorySecondAction" scope="prototype">
+		<property name="categorySecondService" ref="categorySecondService"></property>
+	</bean>
+	<bean id="adminProductAction" class="cn.itcast.product.action.AdminProductAction" scope="prototype">
+		<property name="categorySecondService" ref="categorySecondService"></property>
+		<property name="productService" ref="productService"></property>
+	</bean>
+	
+	<bean id="adminOrderAction" class="cn.itcast.order.action.adminOrderAction" scope="prototype">
+		<property name="orderService" ref="orderService"></property>
+	</bean>
+	</beans>
+
+
+
+

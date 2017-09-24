@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 映射文件 -->
+<!-- package 实体所在包名，可以不写，但是class中 name要指定全路径-->
+<hibernate-mapping package="cn.itcast.order.entity" >
+	<class name="OrderItem" table="orderitem" >
+		<id name="itemid" column="itemid">
+			<generator class="native"></generator>
+		</id>
+		<property name="count" />
+		<property name="subtotal" />
+		<!-- 与商品之间的关系 ，一个订单项里有一个类商品,多个商品可以在一个订单项中-->
+		<many-to-one name="product"  lazy="false" cascade="delete"  class="cn.itcast.product.entity.Product" column="pid"></many-to-one>
+		<!-- 与订单之间的商品   一个订单中有多个订单项 -->
+		<many-to-one name="order"  lazy="false" class="cn.itcast.order.entity.Order" column="oid"></many-to-one>
+	</class>
+
+</hibernate-mapping>

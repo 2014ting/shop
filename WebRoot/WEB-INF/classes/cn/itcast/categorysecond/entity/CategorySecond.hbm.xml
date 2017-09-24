@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 映射文件 -->
+<!-- package 实体所在包名，可以不写，但是class中 name要指定全路径-->
+<hibernate-mapping package="cn.itcast.categorysecond.entity" >
+	<class name="CategorySecond" table="categorysecond" >
+		<id name="csid" column="csid">
+			<generator class="native"></generator>
+		</id>
+		<property name="csname" column="csname" type="string"></property>
+		<many-to-one name="category" lazy="false" class="cn.itcast.category.entity.Category" column="cid"></many-to-one>
+		<set name="productlist" lazy="false">
+			<key column="csid"></key>
+			<one-to-many class="cn.itcast.product.entity.Product"/>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="shop" extends="struts-default" namespace="/">
+	<interceptors>
+		<interceptor name="myinterceptor" class="cn.itcast.interceptor.myinterceptor"></interceptor>
+	</interceptors>
+		<global-results>
+			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="loginpage">/WEB-INF/jsp/login.jsp</result>
+			<result name="loginfail">/admin/index.jsp</result>
+		</global-results>
+		
+		<action name="index" class="indexAction">
+			<result name="index">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="registerpage">/WEB-INF/jsp/register.jsp</result>
+			
+			<result name="input">/WEB-INF/jsp/register.jsp</result> 
+			<result name="loginsuccess" type="redirectAction">index</result> 
+			<result name="quit" type="redirectAction">index</result>
+			 <result name="registsuccess" type="redirectAction">index</result>
+		</action>
+		<action name="checkImg" class="checkimgAction" method="checkImg">
+		</action>
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="findByid">/WEB-INF/jsp/product.jsp</result>
+			<result name="findBycid">/WEB-INF/jsp/productlist.jsp</result>
+			<result name="findBycsid">/WEB-INF/jsp/productlist.jsp</result>
+		
+		</action>
+		<action name="cart_*" class="cartAction" method="{1}">
+			<result name="addcart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="clearcart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="deletecart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="mycart">/WEB-INF/jsp/cart.jsp</result>
+		</action>
+		<action name="order_*" class="orderAction" method="{1}">
+			<result name="savesuccess">/WEB-INF/jsp/order.jsp</result>
+			<result name="deleteorder">/WEB-INF/jsp/order.jsp</result>
+			<result name="findBypageUid">/WEB-INF/jsp/orderlist.jsp</result>
+			<result name="findByoid">/WEB-INF/jsp/order.jsp</result>
+			<result name="updatesuccess" type="redirectAction"> order_findBypageUid?page=1</result>
+		</action>
+		
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginsuccess">/admin/home.jsp</result>
+			<result name="loginfail">/admin/index.jsp</result>
+			
+		</action>
+		
+		<action name="adminCategory_*" class="adminCategory" method="{1}">
+			<result name="addpage">/admin/category/add.jsp</result>
+			<result name="findall">/admin/category/list.jsp</result>
+			<result name="savesuccess" type="redirectAction">adminCategory_findAll</result>
+			<result name="deletesuccess" type="redirectAction">adminCategory_findAll</result>
+			<result name="editpage">/admin/category/edit.jsp</result>
+			<result name="update" type="redirectAction" >adminCategory_findAll</result>
+		
+		
+			<interceptor-ref name="myinterceptor" ></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="adminCategorySecond_*" class="adminCategorySecond" method="{1}">
+			<result name="findall">/admin/categorysecond/list.jsp</result>
+			<result name="addpage">/admin/categorysecond/add.jsp</result>
+			<result name="editpage">/admin/categorysecond/edit.jsp</result>
+			<result name="updatesuccess"  type="redirectAction">adminCategorySecond_findAll?page=1</result>
+			<result name="deletesuccess" type="redirectAction">adminCategorySecond_findAll?page=1</result>
+			
+			
+			<interceptor-ref name="myinterceptor" ></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+		</action>
+		<action name="adminProduct_*" class="adminProductAction" method="{1}">
+			<result name="findall">/admin/product/list.jsp</result>
+			<result name="addpage">/admin/product/add.jsp</result>
+			<result name="deletesuccess" type="redirectAction" >adminProduct_findAll?page=1</result>
+			<result name="addsuccess" type="redirectAction">adminProduct_findAll?page=1</result>
+			<result name="edit">/admin/product/edit.jsp</result>
+			<result name="updatesuccess" type="redirectAction"	>adminProduct_findAll?page=1</result>
+			
+			
+			<interceptor-ref name="myinterceptor" ></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="adminOrder_*" class="adminOrderAction" method="{1}">
+			<result name="findall">/admin/order/list.jsp</result>
+			<result name="findOrderItem">/admin/order/orderitem.jsp</result>
+			<result name="updatesuccess" type="redirectAction">adminOrder_findAll?page=1</result>
+			
+			<interceptor-ref name="myinterceptor" ></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+	
+	
+
+</struts>

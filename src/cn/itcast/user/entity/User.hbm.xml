@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 映射文件 -->
+<!-- package 实体所在包名，可以不写，但是class中 name要指定全路径-->
+<hibernate-mapping package="cn.itcast.user.entity" >
+	<class name="User" table="user" >
+		<id name="uid" column="uid">
+			<generator class="native"></generator>
+		</id>
+		<property name="username"  column="username" type="string"></property>
+		<property name="password"  column="password" type="string"></property>
+		<property name="email"  column="email" type="string"></property>
+		<property name="name"  column="name" type="string"></property>
+		<property name="phone"  column="phone" type="string"></property>
+		<property name="addr"  column="addr" type="string"></property>
+		<property name="state"  column="state" type="string"></property>
+		<property name="code"  column="code" ></property>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<bean id="userService" class="cn.itcast.user.service.impl.UserService">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<bean id="categoryService" class="cn.itcast.category.service.impl.CategoryService">
+		<property name="categoryDao" ref="categoryDao"></property>
+	</bean>
+	
+	<bean id="productService" class="cn.itcast.product.service.impl.ProductService">
+		<property name="productDao" ref="productDao"></property>
+	</bean>
+	
+	<bean id="orderService" class="cn.itcast.order.service.impl.OrderService">
+		<property name="orderDao" ref="orderDao"></property>
+	</bean>
+	
+	<bean id="adminUserService" class="cn.itcast.admin.service.impl.AdminUserServcie">
+		<property name="adminUserDao" ref="adminUserDao"></property>
+	
+	</bean>
+	
+	<bean id="categorySecondService" class="cn.itcast.categorysecond.service.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"></property>
+	</bean>
+	</beans>
+
+
+
+
